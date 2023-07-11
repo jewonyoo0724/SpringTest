@@ -49,6 +49,7 @@ public class RealEstateController {
 	public String insertRealEstateAsObject()
 	{
 		RealEstate realEstate = new RealEstate();
+		
 		realEstate.setRealtorId(3);
 		realEstate.setAddress("푸르지용 리버 303동 1104호");
 		realEstate.setArea(89);
@@ -67,5 +68,22 @@ public class RealEstateController {
 		int count = realEstateService.addRealEstateAsField(realtorId, "썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
 		return count + " rows affected";
 	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateRealEstate()
+	{
+		int count = realEstateService.updateRealEstate(12, "전세", 70000);
+		return count + " rows affected";
+	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public String deleteRealEstate(@RequestParam("id")int id)
+	{
+		int count = realEstateService.deleteRealEstate(id);
+		return count + " rows affected";
+	}
+	
 	
 }
