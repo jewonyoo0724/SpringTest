@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.alpaca.spring.test.jsp.repository.SellerRepository">
+	<insert id="insertSeller" parameterType="map">
+		INSERT INTO
+			`seller`
+		(
+			`nickname`,
+			`profileImage`,
+			`temperature`
+		)
+		VALUE
+		(
+			#{nickname},
+			#{image},
+			#{temp}
+		)
+	</insert>
+	
+	<select id="selectLastSeller" resultType="com.alpaca.spring.test.jsp.domain.Seller">
+		SELECT
+			`nickname`,
+			`profileImage`,
+			`temperature`
+		FROM
+			`seller`
+		ORDER BY
+			`id` DESC
+		LIMIT 1;
+	</select>
+	
+	<select id="selectLastSellerbyId" parameterType="int" resultType="com.alpaca.spring.test.jsp.domain.Seller">
+		SELECT
+			`nickname`,
+			`profileImage`,
+			`temperature`
+		FROM
+			`seller`
+		WHERE `id` = #{id};
+	</select>
+</mapper>
