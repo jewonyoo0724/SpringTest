@@ -42,6 +42,7 @@ public class RealtorController {
 		int count = realtorService.addRealtor(realtor);
 		
 		model.addAttribute("result", realtor);
+		model.addAttribute("row", count);
 		
 		return "jsp/realtorinfo";
 	}

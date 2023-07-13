@@ -29,6 +29,7 @@
 		
 		</tbody>
 	</table>
+	<h3>${row} rows affected.</h3>
 
 </body>
 </html>
