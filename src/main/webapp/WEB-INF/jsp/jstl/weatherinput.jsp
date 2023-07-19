@@ -18,8 +18,8 @@
 			<option>흐림</option>
 			<option>비</option>
 		</select><br>
-		<label>Micodust</label>
-		<select name="microdust">
+		<label>Microdust</label>
+		<select name="microDust">
 			<option>보통</option>
 			<option>좋음</option>
 			<option>나쁨</option>

@@ -1,5 +1,6 @@
 package com.alpaca.spring.test.jstl.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,15 @@ public class WeatherService {
 		return weatherList;
 	}
 	
-	public int addWeather(String date, String weather, double temperature, double precipitation, String microDust, double windspeed)
+	public int addWeather(Date date, String weather, double temperature, double precipitation, String microDust, double windspeed)
 	{
 		int count = weatherRepository.insertWeather(date, weather, temperature, precipitation, microDust, windspeed);
+		return count;
+	}
+	
+	public int addWeatherByObject(Weather weather)
+	{
+		int count = weatherRepository.insertWeatherByObject(weather);
 		return count;
 	}
 }

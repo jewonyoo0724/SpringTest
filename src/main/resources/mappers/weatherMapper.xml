@@ -40,4 +40,26 @@
 			#{windspeed}
 		);
 	</insert>
+	
+	<insert id="insertWeatherByObject" parameterType="com.alpaca.spring.test.jstl.domain.Weather">
+		INSERT INTO
+			`weatherhistory`
+		(	
+			`date`,
+			`weather`,
+			`temperatures`,
+			`precipitation`,
+			`microDust`,
+			`windspeed`
+		)
+		VALUE
+		(
+			#{date},
+			#{weather},
+			#{temperatures},
+			#{precipitation},
+			#{microDust},
+			#{windspeed}
+		);
+	</insert>
 </mapper>

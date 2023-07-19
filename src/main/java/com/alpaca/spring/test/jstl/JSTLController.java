@@ -1,7 +1,6 @@
 package com.alpaca.spring.test.jstl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alpaca.spring.test.jstl.domain.Weather;
 import com.alpaca.spring.test.jstl.service.WeatherService;
@@ -102,16 +101,20 @@ public class JSTLController {
 	
 	@PostMapping("/test05/input")
 	public String addWeather(
-			@RequestParam("date") String date,
-			@RequestParam("weather") String weather,
-			@RequestParam("temperature") double temperature,
-			@RequestParam("precipitation") double precipitation,
-			@RequestParam("microdust") String microDust,
-			@RequestParam("windspeed") double windspeed,
-			Model model)
+			//2017년 8월 16일
+//			@RequestParam("date") @DateTimeFormat(pattern="yyyy년 MM월 dd일") Date date,
+//			@RequestParam("weather") String weather,
+//			@RequestParam("temperature") double temperature,
+//			@RequestParam("precipitation") double precipitation,
+//			@RequestParam("microdust") String microDust,
+//			@RequestParam("windspeed") double windspeed
+			@ModelAttribute Weather weather)
 	{
-		int count = weatherService.addWeather(date, weather, temperature, precipitation, microDust, windspeed);
+//		int count = weatherService.addWeather(date, weather, temperature, precipitation, microDust, windspeed);
 		
+		int count = weatherService.addWeatherByObject(weather);
+		
+		//redirect (spring ver.)
 		return "redirect:/jstl/test05";
 	}
 	
