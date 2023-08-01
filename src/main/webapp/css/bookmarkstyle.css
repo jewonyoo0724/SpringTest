@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+#duplicateMsg
+{
+	display:none;
+}
+#uniqueMsg
+{
+	display:none;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+#wrap
+{
+	width:1200px;
+	margin:auto;
+}

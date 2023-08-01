@@ -27,4 +27,22 @@ public class BookmarkService {
 		return count;
 	}
 	
+	public boolean isDuplicateUrl(String url)
+	{
+		
+		if (bookmarkRepository.selectCountUrl(url) == 0)
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public int deleteBookmark(String name, String url)
+	{
+		int count = bookmarkRepository.deleteBookmark(name, url);
+		
+		return count;
+	}
+	
 }

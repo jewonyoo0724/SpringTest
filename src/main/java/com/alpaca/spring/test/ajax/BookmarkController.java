@@ -60,4 +60,43 @@ public class BookmarkController {
 	{
 		return "ajax/bookmarkinput";
 	}
+	
+	//API
+	@PostMapping("/url-confirm")
+	@ResponseBody
+	public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url)
+	{
+		Map<String, Boolean> duplicateMap = new HashMap<>();
+		if (bookmarkService.isDuplicateUrl(url))
+		{
+			duplicateMap.put("isDuplicate", true);
+		}
+		else
+		{
+			duplicateMap.put("isDuplicate", false);
+		}
+		
+		return duplicateMap;
+	}
+	
+	@GetMapping("/delete")
+	public Map<String, String> deleteBookmark(
+			@RequestParam("name") String name, 
+			@RequestParam("url") String url)
+	{
+		Map<String, String> deleteMap = new HashMap<>();
+		if (bookmarkService.deleteBookmark(name, url) == 1)
+		{
+			deleteMap.put("result", "success");
+		}
+		else
+		{
+			deleteMap.put("result", "fail");
+		}
+		
+		return deleteMap;
+	}
+	
+	
+	
 }
